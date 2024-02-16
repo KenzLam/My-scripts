@@ -1,0 +1,522 @@
+local Gui = game:GetService("Players").LocalPlayer.PlayerGui
+local function Script()
+	local script = Instance.new('LocalScript', Gui)
+
+-- SETTINGS:
+
+local SEnable = false
+local SLoop = false
+local SBrightness = 1.5
+local SExposureCompensation = 0.2
+
+-- GUI CHECK:
+
+local Ver = "No Dark v1.6"
+
+local OldGui = game.CoreGui:FindFirstChild(Ver)
+
+if OldGui then
+	OldGui:Destroy()
+end
+
+if _G.NoDark == nil then
+
+	_G.NoDark = true
+	_G.ND_Enable = SEnable
+	_G.ND_Loop = SLoop
+	_G.ND_Brightness = SBrightness
+	_G.ND_ExposureCompensation = SExposureCompensation
+
+else
+
+	_G.ND_Enable = false
+	_G.ND_Loop = false
+
+end
+
+-- Instances:
+
+local NoDark = Instance.new("ScreenGui")
+local Open = Instance.new("TextButton")
+local UIGradient = Instance.new("UIGradient")
+local Main = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local UIGradient_2 = Instance.new("UIGradient")
+local Close = Instance.new("TextButton")
+local UIGradient_3 = Instance.new("UIGradient")
+local Minisize = Instance.new("TextButton")
+local UIGradient_4 = Instance.new("UIGradient")
+local UIGradient_5 = Instance.new("UIGradient")
+local ScrollingFrame = Instance.new("ScrollingFrame")
+local Enable = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Text = Instance.new("TextLabel")
+local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+local Info = Instance.new("Frame")
+local UICorner_2 = Instance.new("UICorner")
+local UIAspectRatioConstraint_2 = Instance.new("UIAspectRatioConstraint")
+local UIAspectRatioConstraint_3 = Instance.new("UIAspectRatioConstraint")
+local Button = Instance.new("TextButton")
+local UIGridLayout = Instance.new("UIGridLayout")
+local Loop = Instance.new("Frame")
+local UICorner_3 = Instance.new("UICorner")
+local Text_2 = Instance.new("TextLabel")
+local UIAspectRatioConstraint_4 = Instance.new("UIAspectRatioConstraint")
+local Info_2 = Instance.new("Frame")
+local UICorner_4 = Instance.new("UICorner")
+local UIAspectRatioConstraint_5 = Instance.new("UIAspectRatioConstraint")
+local UIAspectRatioConstraint_6 = Instance.new("UIAspectRatioConstraint")
+local Button_2 = Instance.new("TextButton")
+local Brightness = Instance.new("Frame")
+local UICorner_5 = Instance.new("UICorner")
+local Text_3 = Instance.new("TextLabel")
+local UIAspectRatioConstraint_7 = Instance.new("UIAspectRatioConstraint")
+local UIAspectRatioConstraint_8 = Instance.new("UIAspectRatioConstraint")
+local TextBox = Instance.new("TextBox")
+local UIAspectRatioConstraint_9 = Instance.new("UIAspectRatioConstraint")
+local ExposureCompensation = Instance.new("Frame")
+local UICorner_6 = Instance.new("UICorner")
+local Text_4 = Instance.new("TextLabel")
+local UIAspectRatioConstraint_10 = Instance.new("UIAspectRatioConstraint")
+local UIAspectRatioConstraint_11 = Instance.new("UIAspectRatioConstraint")
+local TextBox_2 = Instance.new("TextBox")
+local UIAspectRatioConstraint_12 = Instance.new("UIAspectRatioConstraint")
+local UIAspectRatioConstraint_13 = Instance.new("UIAspectRatioConstraint")
+
+--Properties:
+
+NoDark.Name = Ver
+NoDark.Parent = game.CoreGui
+NoDark.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Open.Name = "Open"
+Open.Parent = NoDark
+Open.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Open.Size = UDim2.new(0.20804438, 0, 0.0679347813, 0)
+Open.Visible = false
+Open.Font = Enum.Font.SourceSans
+Open.Text = Ver
+Open.TextColor3 = Color3.fromRGB(0, 0, 0)
+Open.TextScaled = true
+Open.TextSize = 14.000
+Open.TextWrapped = true
+Open.Draggable = true
+
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 170, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 111, 167))}
+UIGradient.Rotation = 90
+UIGradient.Parent = Open
+
+UIAspectRatioConstraint.Parent = Open
+UIAspectRatioConstraint.AspectRatio = 3.000
+
+Main.Name = "Main"
+Main.Parent = NoDark
+Main.AnchorPoint = Vector2.new(0.5, 0.5)
+Main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Main.Position = UDim2.new(0.5, 0, 0.5, 0)
+Main.Size = UDim2.new(0.693481266, 0, 0.679347813, 0)
+Main.Visible = true
+
+TextLabel.Parent = Main
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.Size = UDim2.new(0.75999999, 0, 0.0799999982, 0)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = Ver
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextStrokeColor3 = Color3.fromRGB(0, 170, 255)
+TextLabel.TextWrapped = true
+
+UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 170, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 100, 150))}
+UIGradient_2.Rotation = 90
+UIGradient_2.Parent = TextLabel
+
+Close.Name = "Close"
+Close.Parent = Main
+Close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Close.Position = UDim2.new(0.920000017, 0, 0, 0)
+Close.Size = UDim2.new(0.0799999982, 0, 0.0799999982, 0)
+Close.Font = Enum.Font.SourceSans
+Close.Text = "X"
+Close.TextColor3 = Color3.fromRGB(0, 0, 0)
+Close.TextScaled = true
+Close.TextSize = 14.000
+Close.TextWrapped = true
+
+UIGradient_3.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(150, 0, 0))}
+UIGradient_3.Rotation = 90
+UIGradient_3.Parent = Close
+
+Minisize.Name = "Minisize"
+Minisize.Parent = Main
+Minisize.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Minisize.Position = UDim2.new(0.75999999, 0, 0, 0)
+Minisize.Size = UDim2.new(0.159999996, 0, 0.0799999982, 0)
+Minisize.Font = Enum.Font.SourceSans
+Minisize.Text = "_"
+Minisize.TextColor3 = Color3.fromRGB(0, 0, 0)
+Minisize.TextScaled = true
+Minisize.TextSize = 14.000
+Minisize.TextWrapped = true
+
+UIGradient_4.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(150, 150, 0))}
+UIGradient_4.Rotation = 90
+UIGradient_4.Parent = Minisize
+
+UIGradient_5.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 0, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 100, 150))}
+UIGradient_5.Rotation = -90
+UIGradient_5.Parent = Main
+
+ScrollingFrame.Parent = Main
+ScrollingFrame.Active = true
+ScrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ScrollingFrame.BackgroundTransparency = 1.000
+ScrollingFrame.Position = UDim2.new(0, 0, 0.0799999982, 0)
+ScrollingFrame.Size = UDim2.new(1, 0, 0.920000017, 0)
+ScrollingFrame.ScrollBarThickness = 8
+ScrollingFrame.VerticalScrollBarInset = Enum.ScrollBarInset.ScrollBar
+
+Enable.Name = "Enable"
+Enable.Parent = ScrollingFrame
+Enable.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Enable.Size = UDim2.new(1, 0, 0, 50)
+
+UICorner.CornerRadius = UDim.new(0.300000012, 0)
+UICorner.Parent = Enable
+
+Text.Name = "Text"
+Text.Parent = Enable
+Text.AnchorPoint = Vector2.new(0.5, 0.5)
+Text.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Text.BackgroundTransparency = 1.000
+Text.Position = UDim2.new(0.245570168, 0, 0.5, 0)
+Text.Size = UDim2.new(0.407331973, 0, 0.800000012, 0)
+Text.Font = Enum.Font.SourceSans
+Text.Text = "Enable"
+Text.TextColor3 = Color3.fromRGB(255, 255, 255)
+Text.TextScaled = true
+Text.TextSize = 10.000
+Text.TextWrapped = true
+Text.TextXAlignment = Enum.TextXAlignment.Left
+
+UIAspectRatioConstraint.Parent = Text
+UIAspectRatioConstraint.AspectRatio = 5.000
+
+Info.Name = "Info"
+Info.Parent = Enable
+Info.AnchorPoint = Vector2.new(0.5, 0.5)
+Info.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Info.Position = UDim2.new(0.928131402, 0, 0.5, 0)
+Info.Size = UDim2.new(0.0610997975, 0, 0.600000024, 0)
+
+UICorner_2.CornerRadius = UDim.new(0.300000012, 0)
+UICorner_2.Parent = Info
+
+UIAspectRatioConstraint_2.Parent = Info
+UIAspectRatioConstraint_2.AspectRatio = 1.000
+
+UIAspectRatioConstraint_3.Parent = Enable
+UIAspectRatioConstraint_3.AspectRatio = 9.820
+
+Button.Name = "Button"
+Button.Parent = Enable
+Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Button.BackgroundTransparency = 1.000
+Button.Size = UDim2.new(1, 0, 1, 0)
+Button.ZIndex = 5
+Button.Font = Enum.Font.SourceSans
+Button.TextColor3 = Color3.fromRGB(0, 0, 0)
+Button.TextSize = 14.000
+Button.TextTransparency = 1.000
+
+UIGridLayout.Parent = ScrollingFrame
+UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIGridLayout.CellPadding = UDim2.new(0, 0, 0.00999999978, 0)
+UIGridLayout.CellSize = UDim2.new(1, 0, 0, 50)
+
+Loop.Name = "Loop"
+Loop.Parent = ScrollingFrame
+Loop.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Loop.LayoutOrder = 1
+Loop.Size = UDim2.new(1, 0, 0, 50)
+
+UICorner_3.CornerRadius = UDim.new(0.300000012, 0)
+UICorner_3.Parent = Loop
+
+Text_2.Name = "Text"
+Text_2.Parent = Loop
+Text_2.AnchorPoint = Vector2.new(0.5, 0.5)
+Text_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Text_2.BackgroundTransparency = 1.000
+Text_2.Position = UDim2.new(0.245570168, 0, 0.5, 0)
+Text_2.Size = UDim2.new(0.407331973, 0, 0.800000012, 0)
+Text_2.Font = Enum.Font.SourceSans
+Text_2.Text = "Loop"
+Text_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Text_2.TextScaled = true
+Text_2.TextSize = 10.000
+Text_2.TextWrapped = true
+Text_2.TextXAlignment = Enum.TextXAlignment.Left
+
+UIAspectRatioConstraint_4.Parent = Text_2
+UIAspectRatioConstraint_4.AspectRatio = 5.000
+
+Info_2.Name = "Info"
+Info_2.Parent = Loop
+Info_2.AnchorPoint = Vector2.new(0.5, 0.5)
+Info_2.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Info_2.Position = UDim2.new(0.928131402, 0, 0.5, 0)
+Info_2.Size = UDim2.new(0.0610997975, 0, 0.600000024, 0)
+
+UICorner_4.CornerRadius = UDim.new(0.300000012, 0)
+UICorner_4.Parent = Info_2
+
+UIAspectRatioConstraint_5.Parent = Info_2
+UIAspectRatioConstraint_5.AspectRatio = 1.000
+
+UIAspectRatioConstraint_6.Parent = Loop
+UIAspectRatioConstraint_6.AspectRatio = 9.820
+
+Button_2.Name = "Button"
+Button_2.Parent = Loop
+Button_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Button_2.BackgroundTransparency = 1.000
+Button_2.Size = UDim2.new(1, 0, 1, 0)
+Button_2.ZIndex = 5
+Button_2.Font = Enum.Font.SourceSans
+Button_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+Button_2.TextSize = 14.000
+Button_2.TextTransparency = 1.000
+
+Brightness.Name = "Brightness"
+Brightness.Parent = ScrollingFrame
+Brightness.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Brightness.LayoutOrder = 2
+Brightness.Size = UDim2.new(1, 0, 0, 50)
+
+UICorner_5.CornerRadius = UDim.new(0.300000012, 0)
+UICorner_5.Parent = Brightness
+
+Text_3.Name = "Text"
+Text_3.Parent = Brightness
+Text_3.AnchorPoint = Vector2.new(0.5, 0.5)
+Text_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Text_3.BackgroundTransparency = 1.000
+Text_3.Position = UDim2.new(0.245570168, 0, 0.5, 0)
+Text_3.Size = UDim2.new(0.407331973, 0, 0.800000012, 0)
+Text_3.Font = Enum.Font.SourceSans
+Text_3.Text = "Brightness"
+Text_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+Text_3.TextScaled = true
+Text_3.TextSize = 10.000
+Text_3.TextWrapped = true
+Text_3.TextXAlignment = Enum.TextXAlignment.Left
+
+UIAspectRatioConstraint_7.Parent = Text_3
+UIAspectRatioConstraint_7.AspectRatio = 5.000
+
+UIAspectRatioConstraint_8.Parent = Brightness
+UIAspectRatioConstraint_8.AspectRatio = 9.820
+
+TextBox.Parent = Brightness
+TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.BackgroundTransparency = 1.000
+TextBox.Position = UDim2.new(0.897581518, 0, 0.200000003, 0)
+TextBox.Size = UDim2.new(0.061999999, 0, 0.600000024, 0)
+TextBox.Font = Enum.Font.SourceSans
+TextBox.Text = tostring(_G.ND_Brightness)
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.TextScaled = true
+TextBox.TextSize = 14.000
+TextBox.TextWrapped = true
+
+UIAspectRatioConstraint_9.Parent = TextBox
+UIAspectRatioConstraint_9.AspectRatio = 1.015
+
+ExposureCompensation.Name = "ExposureCompensation"
+ExposureCompensation.Parent = ScrollingFrame
+ExposureCompensation.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ExposureCompensation.LayoutOrder = 3
+ExposureCompensation.Size = UDim2.new(1, 0, 0, 50)
+
+UICorner_6.CornerRadius = UDim.new(0.300000012, 0)
+UICorner_6.Parent = ExposureCompensation
+
+Text_4.Name = "Text"
+Text_4.Parent = ExposureCompensation
+Text_4.AnchorPoint = Vector2.new(0.5, 0.5)
+Text_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Text_4.BackgroundTransparency = 1.000
+Text_4.Position = UDim2.new(0.245570168, 0, 0.5, 0)
+Text_4.Size = UDim2.new(0.407331973, 0, 0.800000012, 0)
+Text_4.Font = Enum.Font.SourceSans
+Text_4.Text = "ExposureCompensation"
+Text_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+Text_4.TextScaled = true
+Text_4.TextSize = 10.000
+Text_4.TextWrapped = true
+Text_4.TextXAlignment = Enum.TextXAlignment.Left
+
+UIAspectRatioConstraint_10.Parent = Text_4
+UIAspectRatioConstraint_10.AspectRatio = 5.000
+
+UIAspectRatioConstraint_11.Parent = ExposureCompensation
+UIAspectRatioConstraint_11.AspectRatio = 9.820
+
+TextBox_2.Parent = ExposureCompensation
+TextBox_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextBox_2.BackgroundTransparency = 1.000
+TextBox_2.Position = UDim2.new(0.897581518, 0, 0.200000003, 0)
+TextBox_2.Size = UDim2.new(0.061999999, 0, 0.600000024, 0)
+TextBox_2.Font = Enum.Font.SourceSans
+TextBox_2.Text = tostring(_G.ND_ExposureCompensation)
+TextBox_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox_2.TextScaled = true
+TextBox_2.TextSize = 14.000
+TextBox_2.TextWrapped = true
+
+UIAspectRatioConstraint_12.Parent = TextBox_2
+UIAspectRatioConstraint_12.AspectRatio = 1.015
+
+UIAspectRatioConstraint_13.Parent = Main
+
+-- Scripts:
+
+Close.MouseButton1Click:Connect(function()
+	_G.ND_Enable = false
+	_G.ND_Loop = false
+	NoDark:Destroy()
+	return
+end)
+
+Minisize.MouseButton1Click:Connect(function()
+	Open.Visible = true
+	Main.Visible = false
+end)
+
+local Ticker = tick()
+Open.MouseButton1Click:Connect(function()
+	if tick() - Ticker <= 0.5 then
+	Open.Visible = false
+	Main.Visible = true
+	end
+	Ticker = tick()
+end)
+
+
+local Lighting = game:GetService("Lighting")
+
+local FoundAtmo = Lighting:FindFirstChildOfClass("Atmosphere")
+local FoundBloom = Lighting:FindFirstChildOfClass("BloomEffect")
+local FoundBlur = Lighting:FindFirstChildOfClass("BlurEffect")
+local FoundColorCor = Lighting:FindFirstChildOfClass("ColorCorrectionEffect")
+local FoundDepthOfField = Lighting:FindFirstChildOfClass("DepthOfFieldEffect")
+local FoundSunRays = Lighting:FindFirstChildOfClass("SunRaysEffect")
+
+local function SetLighting()
+	Lighting.Ambient = Color3.fromRGB(255, 255, 255)
+	Lighting.Brightness = _G.ND_Brightness
+	Lighting.ColorShift_Bottom = Color3.fromRGB(255, 255, 255)
+	Lighting.ColorShift_Top = Color3.fromRGB(255, 255, 255)
+	Lighting.GlobalShadows = false
+	Lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
+	Lighting.ExposureCompensation = _G.ND_ExposureCompensation
+
+	if FoundAtmo then
+		FoundAtmo.Density = 0
+		FoundAtmo.Offset = 0
+		FoundAtmo.Glare = 0
+		FoundAtmo.Haze = 0
+	else
+		Lighting.FogColor = Color3.fromRGB(255, 255, 255)
+		Lighting.FogEnd = math.huge
+		Lighting.FogStart = 0
+	end
+
+	if FoundBloom then
+		FoundBloom.Enabled = false
+	end
+
+	if FoundBlur then
+		FoundBlur.Enabled = false
+	end
+
+	if FoundColorCor then
+		FoundColorCor.Enabled = false
+	end
+
+	if FoundDepthOfField then
+		FoundDepthOfField.Enabled = false
+	end
+
+	if FoundSunRays then
+		FoundSunRays.Enabled = false
+	end
+end
+
+local function Enabled()
+	wait()
+	if _G.ND_Enable == true then
+
+		SetLighting()
+
+	end
+end
+
+
+Button.MouseButton1Click:Connect(function()
+	if _G.ND_Enable == false then
+		_G.ND_Enable = true
+		Info.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+		SetLighting()
+	else
+		_G.ND_Enable = false
+		Info.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	end
+end)
+
+Button_2.MouseButton1Click:Connect(function()
+	if _G.ND_Loop == false then
+		_G.ND_Loop = true
+		Info_2.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+	else
+		_G.ND_Loop = false
+		Info_2.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	end
+end)
+
+
+Lighting.Changed:Connect(function()
+	if _G.ND_Enable == true and _G.ND_Loop == true then
+		SetLighting()
+	end
+end)
+
+
+TextBox:GetPropertyChangedSignal("Text"):Connect(function()
+	if tonumber(TextBox.Text) ~= nil then
+
+		_G.ND_Brightness = tonumber(TextBox.Text)
+
+		if _G.ND_Loop == true and _G.ND_Enable == true then
+			SetLighting()
+		end
+
+	end
+end)
+
+TextBox_2:GetPropertyChangedSignal("Text"):Connect(function()
+	if tonumber(TextBox_2.Text) ~= nil then
+
+		_G.ND_ExposureCompensation = tonumber(TextBox_2.Text)
+
+		if _G.ND_Loop == true and _G.ND_Enable == true then
+			SetLighting()
+		end
+
+	end
+end)
+
+end
+coroutine.wrap(Script)()
