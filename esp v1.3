@@ -1,0 +1,1001 @@
+local S_Enable = false
+local S_Outline = true
+local S_ShowName = true
+local S_ShowStuds = true
+local S_EspTeamColor = true
+local S_ViewTarget = false
+local S_SelfEsp = false
+
+
+
+ --Destroy old gui
+if _G.ForceClose ~= nil then
+	return
+end
+
+--Renew settings
+local Ver = "Esp v2.0"
+
+if _G.Esp == nil then
+	_G.Esp = true
+	_G.Esp_Enable = S_Enable
+	_G.Esp_Outline = S_Outline
+	_G.Esp_ShowName = S_ShowName
+	_G.Esp_ShowStuds = S_ShowStuds
+	_G.Esp_EspTeamColor = S_EspTeamColor
+	_G.Esp_ViewTarget = S_ViewTarget
+	_G.Esp_SelfEsp = S_SelfEsp
+
+else
+	_G.Esp_Enable = false
+
+end
+
+local Gui = game.CoreGui
+
+-- Instances:
+local PS = game:GetService("Players")
+local Camera = workspace.Camera
+
+local Esp = Instance.new("ScreenGui")
+local Open = Instance.new("TextButton")
+local UIGradient = Instance.new("UIGradient")
+local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+local Main = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local UIGradient_2 = Instance.new("UIGradient")
+local Close = Instance.new("TextButton")
+local UIGradient_3 = Instance.new("UIGradient")
+local Minisize = Instance.new("TextButton")
+local UIGradient_4 = Instance.new("UIGradient")
+local UIGradient_5 = Instance.new("UIGradient")
+local ScrollingFrame = Instance.new("ScrollingFrame")
+local Enable = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Text = Instance.new("TextLabel")
+local UIAspectRatioConstraint_2 = Instance.new("UIAspectRatioConstraint")
+local InfoEnable = Instance.new("Frame")
+local UICorner_2 = Instance.new("UICorner")
+local UIAspectRatioConstraint_3 = Instance.new("UIAspectRatioConstraint")
+local UIAspectRatioConstraint_4 = Instance.new("UIAspectRatioConstraint")
+local ButtonEnable = Instance.new("TextButton")
+local UIGridLayout = Instance.new("UIGridLayout")
+local OutlineOnly = Instance.new("Frame")
+local UICorner_3 = Instance.new("UICorner")
+local Text_2 = Instance.new("TextLabel")
+local UIAspectRatioConstraint_5 = Instance.new("UIAspectRatioConstraint")
+local InfoOutlineOnly = Instance.new("Frame")
+local UICorner_4 = Instance.new("UICorner")
+local UIAspectRatioConstraint_6 = Instance.new("UIAspectRatioConstraint")
+local UIAspectRatioConstraint_7 = Instance.new("UIAspectRatioConstraint")
+local ButtonOutline = Instance.new("TextButton")
+local ShowName = Instance.new("Frame")
+local UICorner_5 = Instance.new("UICorner")
+local Text_3 = Instance.new("TextLabel")
+local UIAspectRatioConstraint_8 = Instance.new("UIAspectRatioConstraint")
+local InfoShowName = Instance.new("Frame")
+local UICorner_6 = Instance.new("UICorner")
+local UIAspectRatioConstraint_9 = Instance.new("UIAspectRatioConstraint")
+local UIAspectRatioConstraint_10 = Instance.new("UIAspectRatioConstraint")
+local ButtonShowName = Instance.new("TextButton")
+local ShowStuds = Instance.new("Frame")
+local UICorner_7 = Instance.new("UICorner")
+local Text_4 = Instance.new("TextLabel")
+local UIAspectRatioConstraint_11 = Instance.new("UIAspectRatioConstraint")
+local InfoShowStuds = Instance.new("Frame")
+local UICorner_8 = Instance.new("UICorner")
+local UIAspectRatioConstraint_12 = Instance.new("UIAspectRatioConstraint")
+local UIAspectRatioConstraint_13 = Instance.new("UIAspectRatioConstraint")
+local ButtonShowStuds = Instance.new("TextButton")
+local EspTeamColor = Instance.new("Frame")
+local UICorner_9 = Instance.new("UICorner")
+local Text_5 = Instance.new("TextLabel")
+local UIAspectRatioConstraint_14 = Instance.new("UIAspectRatioConstraint")
+local InfoEspTeamColor = Instance.new("Frame")
+local UICorner_10 = Instance.new("UICorner")
+local UIAspectRatioConstraint_15 = Instance.new("UIAspectRatioConstraint")
+local UIAspectRatioConstraint_16 = Instance.new("UIAspectRatioConstraint")
+local ButtonEspTeamColor = Instance.new("TextButton")
+local ViewTarget = Instance.new("Frame")
+local UICorner_11 = Instance.new("UICorner")
+local Text_6 = Instance.new("TextLabel")
+local UIAspectRatioConstraint_17 = Instance.new("UIAspectRatioConstraint")
+local InfoViewTarget = Instance.new("Frame")
+local UICorner_12 = Instance.new("UICorner")
+local UIAspectRatioConstraint_18 = Instance.new("UIAspectRatioConstraint")
+local UIAspectRatioConstraint_19 = Instance.new("UIAspectRatioConstraint")
+local ButtonViewTarget = Instance.new("TextButton")
+local SelfEsp = Instance.new("Frame")
+local UICorner_13 = Instance.new("UICorner")
+local Text_7 = Instance.new("TextLabel")
+local UIAspectRatioConstraint_20 = Instance.new("UIAspectRatioConstraint")
+local InfoSelfEsp = Instance.new("Frame")
+local UICorner_14 = Instance.new("UICorner")
+local UIAspectRatioConstraint_21 = Instance.new("UIAspectRatioConstraint")
+local UIAspectRatioConstraint_22 = Instance.new("UIAspectRatioConstraint")
+local ButtonSelfEsp = Instance.new("TextButton")
+local UIAspectRatioConstraint_23 = Instance.new("UIAspectRatioConstraint")
+
+--Properties:
+
+Esp.Name = Ver
+Esp.Parent = Gui
+Esp.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Esp.ResetOnSpawn = false
+
+Open.Name = "Open"
+Open.Parent = Esp
+Open.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Open.Size = UDim2.new(0.20804438, 0, 0.0679347813, 0)
+Open.Font = Enum.Font.SourceSans
+Open.Text = Ver
+Open.TextColor3 = Color3.fromRGB(0, 0, 0)
+Open.TextScaled = true
+Open.TextSize = 14.000
+Open.TextWrapped = true
+Open.Draggable = true
+Open.Visible = false
+
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 170, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(150, 100, 0))}
+UIGradient.Rotation = 90
+UIGradient.Parent = Open
+
+UIAspectRatioConstraint.Parent = Open
+UIAspectRatioConstraint.AspectRatio = 3.000
+
+Main.Name = "Main"
+Main.Parent = Esp
+Main.AnchorPoint = Vector2.new(0.5, 0.5)
+Main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Main.Position = UDim2.new(0.5, 0, 0.5, 0)
+Main.Size = UDim2.new(0.693481266, 0, 0.679347813, 0)
+Main.Visible = true
+
+TextLabel.Parent = Main
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.Size = UDim2.new(0.75999999, 0, 0.0799999982, 0)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = Ver
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextStrokeColor3 = Color3.fromRGB(0, 170, 255)
+TextLabel.TextWrapped = true
+
+UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 170, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(150, 100, 0))}
+UIGradient_2.Rotation = 90
+UIGradient_2.Parent = TextLabel
+
+Close.Name = "Close"
+Close.Parent = Main
+Close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Close.Position = UDim2.new(0.920000017, 0, 0, 0)
+Close.Size = UDim2.new(0.0799999982, 0, 0.0799999982, 0)
+Close.Font = Enum.Font.SourceSans
+Close.Text = "X"
+Close.TextColor3 = Color3.fromRGB(0, 0, 0)
+Close.TextScaled = true
+Close.TextSize = 14.000
+Close.TextWrapped = true
+
+UIGradient_3.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(150, 0, 0))}
+UIGradient_3.Rotation = 90
+UIGradient_3.Parent = Close
+
+Minisize.Name = "Minisize"
+Minisize.Parent = Main
+Minisize.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Minisize.Position = UDim2.new(0.75999999, 0, 0, 0)
+Minisize.Size = UDim2.new(0.159999996, 0, 0.0799999982, 0)
+Minisize.Font = Enum.Font.SourceSans
+Minisize.Text = "_"
+Minisize.TextColor3 = Color3.fromRGB(0, 0, 0)
+Minisize.TextScaled = true
+Minisize.TextSize = 14.000
+Minisize.TextWrapped = true
+
+UIGradient_4.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(150, 150, 0))}
+UIGradient_4.Rotation = 90
+UIGradient_4.Parent = Minisize
+
+UIGradient_5.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(150, 100, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 170, 0))}
+UIGradient_5.Rotation = -90
+UIGradient_5.Parent = Main
+
+ScrollingFrame.Parent = Main
+ScrollingFrame.Active = true
+ScrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ScrollingFrame.BackgroundTransparency = 1.000
+ScrollingFrame.Position = UDim2.new(0, 0, 0.0799999982, 0)
+ScrollingFrame.Size = UDim2.new(1, 0, 0.920000017, 0)
+ScrollingFrame.CanvasPosition = Vector2.new(0, 0)
+ScrollingFrame.ScrollBarThickness = 8
+ScrollingFrame.VerticalScrollBarInset = Enum.ScrollBarInset.ScrollBar
+
+Enable.Name = "Enable"
+Enable.Parent = ScrollingFrame
+Enable.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Enable.Size = UDim2.new(1, 0, 0, 50)
+
+UICorner.CornerRadius = UDim.new(0.300000012, 0)
+UICorner.Parent = Enable
+
+Text.Name = "Text"
+Text.Parent = Enable
+Text.AnchorPoint = Vector2.new(0.5, 0.5)
+Text.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Text.BackgroundTransparency = 1.000
+Text.Position = UDim2.new(0.245570168, 0, 0.5, 0)
+Text.Size = UDim2.new(0.407331973, 0, 0.800000012, 0)
+Text.Font = Enum.Font.SourceSans
+Text.Text = "Enable"
+Text.TextColor3 = Color3.fromRGB(255, 255, 255)
+Text.TextScaled = true
+Text.TextSize = 10.000
+Text.TextWrapped = true
+Text.TextXAlignment = Enum.TextXAlignment.Left
+
+UIAspectRatioConstraint_2.Parent = Text
+UIAspectRatioConstraint_2.AspectRatio = 5.000
+
+InfoEnable.Name = "InfoEnable"
+InfoEnable.Parent = Enable
+InfoEnable.AnchorPoint = Vector2.new(0.5, 0.5)
+InfoEnable.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+InfoEnable.Position = UDim2.new(0.928131402, 0, 0.5, 0)
+InfoEnable.Size = UDim2.new(0.0610997975, 0, 0.600000024, 0)
+
+UICorner_2.CornerRadius = UDim.new(0.300000012, 0)
+UICorner_2.Parent = InfoEnable
+
+UIAspectRatioConstraint_3.Parent = InfoEnable
+UIAspectRatioConstraint_3.AspectRatio = 1.000
+
+UIAspectRatioConstraint_4.Parent = Enable
+UIAspectRatioConstraint_4.AspectRatio = 9.820
+
+ButtonEnable.Name = "ButtonEnable"
+ButtonEnable.Parent = Enable
+ButtonEnable.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ButtonEnable.BackgroundTransparency = 1.000
+ButtonEnable.Size = UDim2.new(1, 0, 1, 0)
+ButtonEnable.ZIndex = 5
+ButtonEnable.Font = Enum.Font.SourceSans
+ButtonEnable.TextColor3 = Color3.fromRGB(0, 0, 0)
+ButtonEnable.TextSize = 14.000
+ButtonEnable.TextTransparency = 1.000
+
+UIGridLayout.Parent = ScrollingFrame
+UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIGridLayout.CellPadding = UDim2.new(0, 0, 0.00999999978, 0)
+UIGridLayout.CellSize = UDim2.new(1, 0, 0, 50)
+
+OutlineOnly.Name = "OutlineOnly"
+OutlineOnly.Parent = ScrollingFrame
+OutlineOnly.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+OutlineOnly.LayoutOrder = 1
+OutlineOnly.Size = UDim2.new(1, 0, 0, 50)
+
+UICorner_3.CornerRadius = UDim.new(0.300000012, 0)
+UICorner_3.Parent = OutlineOnly
+
+Text_2.Name = "Text"
+Text_2.Parent = OutlineOnly
+Text_2.AnchorPoint = Vector2.new(0.5, 0.5)
+Text_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Text_2.BackgroundTransparency = 1.000
+Text_2.Position = UDim2.new(0.245570168, 0, 0.5, 0)
+Text_2.Size = UDim2.new(0.407331973, 0, 0.800000012, 0)
+Text_2.Font = Enum.Font.SourceSans
+Text_2.Text = "Outline"
+Text_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Text_2.TextScaled = true
+Text_2.TextSize = 10.000
+Text_2.TextWrapped = true
+Text_2.TextXAlignment = Enum.TextXAlignment.Left
+
+UIAspectRatioConstraint_5.Parent = Text_2
+UIAspectRatioConstraint_5.AspectRatio = 5.000
+
+InfoOutlineOnly.Name = "InfoOutlineOnly"
+InfoOutlineOnly.Parent = OutlineOnly
+InfoOutlineOnly.AnchorPoint = Vector2.new(0.5, 0.5)
+InfoOutlineOnly.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+InfoOutlineOnly.Position = UDim2.new(0.928131402, 0, 0.5, 0)
+InfoOutlineOnly.Size = UDim2.new(0.0610997975, 0, 0.600000024, 0)
+
+UICorner_4.CornerRadius = UDim.new(0.300000012, 0)
+UICorner_4.Parent = InfoOutlineOnly
+
+UIAspectRatioConstraint_6.Parent = InfoOutlineOnly
+UIAspectRatioConstraint_6.AspectRatio = 1.000
+
+UIAspectRatioConstraint_7.Parent = OutlineOnly
+UIAspectRatioConstraint_7.AspectRatio = 9.820
+
+ButtonOutline.Name = "ButtonOutline"
+ButtonOutline.Parent = OutlineOnly
+ButtonOutline.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ButtonOutline.BackgroundTransparency = 1.000
+ButtonOutline.Size = UDim2.new(1, 0, 1, 0)
+ButtonOutline.ZIndex = 5
+ButtonOutline.Font = Enum.Font.SourceSans
+ButtonOutline.TextColor3 = Color3.fromRGB(0, 0, 0)
+ButtonOutline.TextSize = 14.000
+ButtonOutline.TextTransparency = 1.000
+
+ShowName.Name = "ShowName"
+ShowName.Parent = ScrollingFrame
+ShowName.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ShowName.LayoutOrder = 2
+ShowName.Size = UDim2.new(1, 0, 0, 50)
+
+UICorner_5.CornerRadius = UDim.new(0.300000012, 0)
+UICorner_5.Parent = ShowName
+
+Text_3.Name = "Text"
+Text_3.Parent = ShowName
+Text_3.AnchorPoint = Vector2.new(0.5, 0.5)
+Text_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Text_3.BackgroundTransparency = 1.000
+Text_3.Position = UDim2.new(0.245570168, 0, 0.5, 0)
+Text_3.Size = UDim2.new(0.407331973, 0, 0.800000012, 0)
+Text_3.Font = Enum.Font.SourceSans
+Text_3.Text = "Show name"
+Text_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+Text_3.TextScaled = true
+Text_3.TextSize = 10.000
+Text_3.TextWrapped = true
+Text_3.TextXAlignment = Enum.TextXAlignment.Left
+
+UIAspectRatioConstraint_8.Parent = Text_3
+UIAspectRatioConstraint_8.AspectRatio = 5.000
+
+InfoShowName.Name = "InfoShowName"
+InfoShowName.Parent = ShowName
+InfoShowName.AnchorPoint = Vector2.new(0.5, 0.5)
+InfoShowName.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+InfoShowName.Position = UDim2.new(0.928131402, 0, 0.5, 0)
+InfoShowName.Size = UDim2.new(0.0610997975, 0, 0.600000024, 0)
+
+UICorner_6.CornerRadius = UDim.new(0.300000012, 0)
+UICorner_6.Parent = InfoShowName
+
+UIAspectRatioConstraint_9.Parent = InfoShowName
+UIAspectRatioConstraint_9.AspectRatio = 1.000
+
+UIAspectRatioConstraint_10.Parent = ShowName
+UIAspectRatioConstraint_10.AspectRatio = 9.820
+
+ButtonShowName.Name = "ButtonShowName"
+ButtonShowName.Parent = ShowName
+ButtonShowName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ButtonShowName.BackgroundTransparency = 1.000
+ButtonShowName.Size = UDim2.new(1, 0, 1, 0)
+ButtonShowName.ZIndex = 5
+ButtonShowName.Font = Enum.Font.SourceSans
+ButtonShowName.TextColor3 = Color3.fromRGB(0, 0, 0)
+ButtonShowName.TextSize = 14.000
+ButtonShowName.TextTransparency = 1.000
+
+ShowStuds.Name = "ShowStuds"
+ShowStuds.Parent = ScrollingFrame
+ShowStuds.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ShowStuds.LayoutOrder = 3
+ShowStuds.Size = UDim2.new(1, 0, 0, 50)
+
+UICorner_7.CornerRadius = UDim.new(0.300000012, 0)
+UICorner_7.Parent = ShowStuds
+
+Text_4.Name = "Text"
+Text_4.Parent = ShowStuds
+Text_4.AnchorPoint = Vector2.new(0.5, 0.5)
+Text_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Text_4.BackgroundTransparency = 1.000
+Text_4.Position = UDim2.new(0.245570168, 0, 0.5, 0)
+Text_4.Size = UDim2.new(0.407331973, 0, 0.800000012, 0)
+Text_4.Font = Enum.Font.SourceSans
+Text_4.Text = "Show studs"
+Text_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+Text_4.TextScaled = true
+Text_4.TextSize = 10.000
+Text_4.TextWrapped = true
+Text_4.TextXAlignment = Enum.TextXAlignment.Left
+
+UIAspectRatioConstraint_11.Parent = Text_4
+UIAspectRatioConstraint_11.AspectRatio = 5.000
+
+InfoShowStuds.Name = "InfoShowStuds"
+InfoShowStuds.Parent = ShowStuds
+InfoShowStuds.AnchorPoint = Vector2.new(0.5, 0.5)
+InfoShowStuds.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+InfoShowStuds.Position = UDim2.new(0.928131402, 0, 0.5, 0)
+InfoShowStuds.Size = UDim2.new(0.0610997975, 0, 0.600000024, 0)
+
+UICorner_8.CornerRadius = UDim.new(0.300000012, 0)
+UICorner_8.Parent = InfoShowStuds
+
+UIAspectRatioConstraint_12.Parent = InfoShowStuds
+UIAspectRatioConstraint_12.AspectRatio = 1.000
+
+UIAspectRatioConstraint_13.Parent = ShowStuds
+UIAspectRatioConstraint_13.AspectRatio = 9.820
+
+ButtonShowStuds.Name = "ButtonShowStuds"
+ButtonShowStuds.Parent = ShowStuds
+ButtonShowStuds.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ButtonShowStuds.BackgroundTransparency = 1.000
+ButtonShowStuds.Size = UDim2.new(1, 0, 1, 0)
+ButtonShowStuds.ZIndex = 5
+ButtonShowStuds.Font = Enum.Font.SourceSans
+ButtonShowStuds.TextColor3 = Color3.fromRGB(0, 0, 0)
+ButtonShowStuds.TextSize = 14.000
+ButtonShowStuds.TextTransparency = 1.000
+
+EspTeamColor.Name = "EspTeamColor"
+EspTeamColor.Parent = ScrollingFrame
+EspTeamColor.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+EspTeamColor.LayoutOrder = 5
+EspTeamColor.Size = UDim2.new(1, 0, 0, 50)
+
+UICorner_9.CornerRadius = UDim.new(0.300000012, 0)
+UICorner_9.Parent = EspTeamColor
+
+Text_5.Name = "Text"
+Text_5.Parent = EspTeamColor
+Text_5.AnchorPoint = Vector2.new(0.5, 0.5)
+Text_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Text_5.BackgroundTransparency = 1.000
+Text_5.Position = UDim2.new(0.245570168, 0, 0.5, 0)
+Text_5.Size = UDim2.new(0.407331973, 0, 0.800000012, 0)
+Text_5.Font = Enum.Font.SourceSans
+Text_5.Text = "Esp team color"
+Text_5.TextColor3 = Color3.fromRGB(255, 255, 255)
+Text_5.TextScaled = true
+Text_5.TextSize = 10.000
+Text_5.TextWrapped = true
+Text_5.TextXAlignment = Enum.TextXAlignment.Left
+
+UIAspectRatioConstraint_14.Parent = Text_5
+UIAspectRatioConstraint_14.AspectRatio = 5.000
+
+InfoEspTeamColor.Name = "InfoEspTeamColor"
+InfoEspTeamColor.Parent = EspTeamColor
+InfoEspTeamColor.AnchorPoint = Vector2.new(0.5, 0.5)
+InfoEspTeamColor.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+InfoEspTeamColor.Position = UDim2.new(0.928131402, 0, 0.5, 0)
+InfoEspTeamColor.Size = UDim2.new(0.0610997975, 0, 0.600000024, 0)
+
+UICorner_10.CornerRadius = UDim.new(0.300000012, 0)
+UICorner_10.Parent = InfoEspTeamColor
+
+UIAspectRatioConstraint_15.Parent = InfoEspTeamColor
+UIAspectRatioConstraint_15.AspectRatio = 1.000
+
+UIAspectRatioConstraint_16.Parent = EspTeamColor
+UIAspectRatioConstraint_16.AspectRatio = 9.820
+
+ButtonEspTeamColor.Name = "ButtonEspTeamColor"
+ButtonEspTeamColor.Parent = EspTeamColor
+ButtonEspTeamColor.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ButtonEspTeamColor.BackgroundTransparency = 1.000
+ButtonEspTeamColor.Size = UDim2.new(1, 0, 1, 0)
+ButtonEspTeamColor.ZIndex = 5
+ButtonEspTeamColor.Font = Enum.Font.SourceSans
+ButtonEspTeamColor.TextColor3 = Color3.fromRGB(0, 0, 0)
+ButtonEspTeamColor.TextSize = 14.000
+ButtonEspTeamColor.TextTransparency = 1.000
+
+ViewTarget.Name = "ViewTarget"
+ViewTarget.Parent = ScrollingFrame
+ViewTarget.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ViewTarget.LayoutOrder = 5
+ViewTarget.Size = UDim2.new(1, 0, 0, 50)
+
+UICorner_11.CornerRadius = UDim.new(0.300000012, 0)
+UICorner_11.Parent = ViewTarget
+
+Text_6.Name = "Text"
+Text_6.Parent = ViewTarget
+Text_6.AnchorPoint = Vector2.new(0.5, 0.5)
+Text_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Text_6.BackgroundTransparency = 1.000
+Text_6.Position = UDim2.new(0.245570168, 0, 0.5, 0)
+Text_6.Size = UDim2.new(0.407331973, 0, 0.800000012, 0)
+Text_6.Font = Enum.Font.SourceSans
+Text_6.Text = "View target (anti cheat may detect)"
+Text_6.TextColor3 = Color3.fromRGB(255, 255, 255)
+Text_6.TextScaled = true
+Text_6.TextSize = 10.000
+Text_6.TextWrapped = true
+Text_6.TextXAlignment = Enum.TextXAlignment.Left
+
+UIAspectRatioConstraint_17.Parent = Text_6
+UIAspectRatioConstraint_17.AspectRatio = 5.000
+
+InfoViewTarget.Name = "InfoViewTarget"
+InfoViewTarget.Parent = ViewTarget
+InfoViewTarget.AnchorPoint = Vector2.new(0.5, 0.5)
+InfoViewTarget.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+InfoViewTarget.Position = UDim2.new(0.928131402, 0, 0.5, 0)
+InfoViewTarget.Size = UDim2.new(0.0610997975, 0, 0.600000024, 0)
+
+UICorner_12.CornerRadius = UDim.new(0.300000012, 0)
+UICorner_12.Parent = InfoViewTarget
+
+UIAspectRatioConstraint_18.Parent = InfoViewTarget
+UIAspectRatioConstraint_18.AspectRatio = 1.000
+
+UIAspectRatioConstraint_19.Parent = ViewTarget
+UIAspectRatioConstraint_19.AspectRatio = 9.820
+
+ButtonViewTarget.Name = "ButtonViewTarget"
+ButtonViewTarget.Parent = ViewTarget
+ButtonViewTarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ButtonViewTarget.BackgroundTransparency = 1.000
+ButtonViewTarget.Size = UDim2.new(1, 0, 1, 0)
+ButtonViewTarget.ZIndex = 5
+ButtonViewTarget.Font = Enum.Font.SourceSans
+ButtonViewTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
+ButtonViewTarget.TextSize = 14.000
+ButtonViewTarget.TextTransparency = 1.000
+
+SelfEsp.Name = "SelfEsp"
+SelfEsp.Parent = ScrollingFrame
+SelfEsp.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+SelfEsp.LayoutOrder = 5
+SelfEsp.Size = UDim2.new(1, 0, 0, 50)
+
+UICorner_13.CornerRadius = UDim.new(0.300000012, 0)
+UICorner_13.Parent = SelfEsp
+
+Text_7.Name = "Text"
+Text_7.Parent = SelfEsp
+Text_7.AnchorPoint = Vector2.new(0.5, 0.5)
+Text_7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Text_7.BackgroundTransparency = 1.000
+Text_7.Position = UDim2.new(0.245570168, 0, 0.5, 0)
+Text_7.Size = UDim2.new(0.407331973, 0, 0.800000012, 0)
+Text_7.Font = Enum.Font.SourceSans
+Text_7.Text = "Self Esp"
+Text_7.TextColor3 = Color3.fromRGB(255, 255, 255)
+Text_7.TextScaled = true
+Text_7.TextSize = 10.000
+Text_7.TextWrapped = true
+Text_7.TextXAlignment = Enum.TextXAlignment.Left
+
+UIAspectRatioConstraint_20.Parent = Text_7
+UIAspectRatioConstraint_20.AspectRatio = 5.000
+
+InfoSelfEsp.Name = "InfoSelfEsp"
+InfoSelfEsp.Parent = SelfEsp
+InfoSelfEsp.AnchorPoint = Vector2.new(0.5, 0.5)
+InfoSelfEsp.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+InfoSelfEsp.Position = UDim2.new(0.928131402, 0, 0.5, 0)
+InfoSelfEsp.Size = UDim2.new(0.0610997975, 0, 0.600000024, 0)
+
+UICorner_14.CornerRadius = UDim.new(0.300000012, 0)
+UICorner_14.Parent = InfoSelfEsp
+
+UIAspectRatioConstraint_21.Parent = InfoSelfEsp
+UIAspectRatioConstraint_21.AspectRatio = 1.000
+
+UIAspectRatioConstraint_22.Parent = SelfEsp
+UIAspectRatioConstraint_22.AspectRatio = 9.820
+
+ButtonSelfEsp.Name = "ButtonSelfEsp"
+ButtonSelfEsp.Parent = SelfEsp
+ButtonSelfEsp.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ButtonSelfEsp.BackgroundTransparency = 1.000
+ButtonSelfEsp.Size = UDim2.new(1, 0, 1, 0)
+ButtonSelfEsp.ZIndex = 5
+ButtonSelfEsp.Font = Enum.Font.SourceSans
+ButtonSelfEsp.TextColor3 = Color3.fromRGB(0, 0, 0)
+ButtonSelfEsp.TextSize = 14.000
+ButtonSelfEsp.TextTransparency = 1.000
+
+UIAspectRatioConstraint_23.Parent = Main
+
+
+
+--SCRIPT_---------------------------------------
+local IsViewing = false
+
+local IsClosed = false
+
+Close.MouseButton1Click:Connect(function()
+	_G.ForceClose()
+end)
+
+Minisize.MouseButton1Click:Connect(function()
+	Open.Visible = true
+	Main.Visible = false
+end)
+
+local Ticker = tick()
+Open.MouseButton1Click:Connect(function()
+	if tick() - Ticker <= 0.5 then
+		Open.Visible = false
+		Main.Visible = true
+	end
+	Ticker = tick()
+end)
+
+
+
+local function CreateDaBill(plr)
+	local Chara = plr.Character
+	local Root = Chara:FindFirstChild("HumanoidRootPart")
+	local Hum = Chara:FindFirstChild("Humanoid")
+
+	if Root and Hum then
+		--Bill gui
+		local Bill = Instance.new("BillboardGui", Esp.Parent)
+		Bill.Name = plr.Name.." Esp bill"
+		Bill.AlwaysOnTop = true
+		Bill.MaxDistance = math.huge
+		Bill.Size = UDim2.new(0, 100, 0, 100)
+		Bill.SizeOffset = Vector2.new(0, -0.1)
+		Bill.Adornee = Root
+		Bill.Active = true
+
+		local ViewPlrButton = Instance.new("TextButton", Bill)
+		ViewPlrButton.Name = "ViewButton"
+		ViewPlrButton.AnchorPoint = Vector2.new(0.5, 0.5)
+		ViewPlrButton.BackgroundTransparency = 1
+		ViewPlrButton.Position = UDim2.new(0.5, 0, 0.25, 0)
+		ViewPlrButton.Size = UDim2.new(0.5, 0, 0.5, 0)
+		ViewPlrButton.TextScaled =  true
+		ViewPlrButton.Text = ""
+
+		local Frame = Instance.new("Frame",Bill)
+		Frame.BackgroundTransparency = 1
+		Frame.Position = UDim2.new(0, 0, 0, 50)
+		Frame.Size = UDim2.new(1, 0, 0.5, 0)
+
+		local UiGrid = Instance.new("UIGridLayout", Frame)
+		UiGrid.CellPadding = UDim2.new(0, 0, 0, 0)
+		UiGrid.CellSize = UDim2.new(1, 0, 0.5, 0)
+
+		local PlrNameButton = Instance.new("TextLabel", Frame)
+		PlrNameButton.Name = "PlrName"
+		PlrNameButton.BackgroundTransparency = 1
+		PlrNameButton.Text = plr.Name
+		PlrNameButton.TextColor3 = Color3.new(1, 0.666667, 0)
+		PlrNameButton.TextScaled = true
+		PlrNameButton.TextStrokeColor3 = Color3.new(0, 0, 0)
+		PlrNameButton.TextStrokeTransparency = 0
+		PlrNameButton.LayoutOrder = 0
+
+		local StudsTxt = Instance.new("TextLabel", Frame)
+		StudsTxt.Name = "Studs"
+		StudsTxt.BackgroundTransparency = 1
+		StudsTxt.Text = ""
+		StudsTxt.TextColor3 = Color3.new(1, 0.666667, 0)
+		StudsTxt.TextScaled = true
+		StudsTxt.TextStrokeColor3 = Color3.new(0, 0, 0)
+		StudsTxt.TextStrokeTransparency = 0
+		StudsTxt.LayoutOrder = 1
+		--Bill gui
+
+		--Bill gui 2
+		local Bill2 = Instance.new("BillboardGui", Esp.Parent)
+		Bill2.Name = plr.Name.." Esp bill 2"
+		Bill2.AlwaysOnTop = true
+		Bill2.MaxDistance = math.huge
+		Bill2.Size = UDim2.new(5, 0, 8, 0)
+		Bill2.Adornee = Root
+		Bill2.Active = true
+
+		local FrameOutline = Instance.new("Frame", Bill2)
+		FrameOutline.BackgroundTransparency = 1
+		FrameOutline.Position = UDim2.new(0, 3, 0, 3)
+		FrameOutline.Size = UDim2.new(1, -6, 1, -6)
+
+		local UiStroke = Instance.new("UIStroke", FrameOutline)
+		UiStroke.Color = Color3.fromRGB(255, 0, 0)
+		UiStroke.LineJoinMode = Enum.LineJoinMode.Miter
+		UiStroke.Thickness = 2
+
+		return Bill, Bill2
+
+	else
+		return
+	end
+end
+
+local function UpdatePlrEsp(plr, IsCreate)
+	local Chara = plr.Character
+	if Chara ~= nil then
+		local Root = Chara:FindFirstChild("HumanoidRootPart")
+		local Hum = Chara:FindFirstChild("Humanoid")
+
+		if Root and Hum then
+			local Bill, Bill2
+
+			if Esp.Parent:FindFirstChild(plr.Name.." Esp bill") and Esp.Parent:FindFirstChild(plr.Name.." Esp bill 2") then
+				Bill = Esp.Parent:FindFirstChild(plr.Name.." Esp bill")
+				Bill2 = Esp.Parent:FindFirstChild(plr.Name.." Esp bill 2")
+			elseif IsCreate == true then
+				Bill, Bill2 = CreateDaBill(plr)
+				if Bill == nil or Bill2 == nil then
+					return
+				end
+			end
+
+			if IsCreate == false or Hum.Health <= 0 then
+				if Bill then
+					Bill:Destroy()
+				end
+				if Bill2 then
+					Bill2:Destroy()
+				end
+
+				return
+			end
+			
+			if not Root or not Hum then
+				if Bill then
+					Bill:Destroy()
+				end
+				if Bill2 then
+					Bill2:Destroy()
+				end
+
+				return
+			end
+			
+			Bill.Adornee = Root
+			Bill2.Adornee = Root
+
+			local Frame = Bill.Frame
+			local UiGrid = Frame.UIGridLayout
+			local PlrNameButton = Frame.PlrName
+			local StudsTxt = Frame.Studs
+
+			local FrameOutline = Bill2.Frame
+			local UiStroke = FrameOutline.UIStroke
+
+			local EspColor = Color3.fromRGB(255, 170, 0)
+
+			if _G.Esp_EspTeamColor == true then
+				if plr.Team ~= nil then
+					EspColor = plr.TeamColor.Color
+					UiStroke.Color = EspColor
+				end
+			else
+				EspColor = EspColor
+				UiStroke.Color = EspColor
+			end
+
+			--if _G.Esp_ViewTarget == true then
+			--	ViewPlrButton.Visible = true
+			--else
+			--	ViewPlrButton.Visible = false
+			--end
+
+			if _G.Esp_ShowName == true then
+				PlrNameButton.Visible = true
+				PlrNameButton.TextColor3 = EspColor
+			else
+				PlrNameButton.Visible = false
+			end
+
+			if _G.Esp_ShowStuds == true then
+				StudsTxt.Visible = true
+				StudsTxt.TextColor3 = EspColor
+
+				local OurPlrRoot = PS.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+				
+				if OurPlrRoot and Root then
+					local Distance = (Root.Position - OurPlrRoot.Position).Magnitude
+					StudsTxt.Text = math.floor(Distance)
+				end
+			else
+				StudsTxt.Visible = false
+			end
+
+			if _G.Esp_SelfEsp == false and plr.Name == PS.LocalPlayer.Name then
+				Bill.Enabled = false
+				Bill2.Enabled = false
+			else
+				Bill.Enabled = true
+				Bill2.Enabled = true
+			end
+
+			if _G.Esp_Outline == false then
+				Bill2.Enabled = false
+			else
+				Bill2.Enabled = true
+			end
+
+			return
+		end
+	end
+end
+
+local TheDelay = false
+local function CleanEsp(IsFromHeartBeat)
+	if TheDelay == false and IsFromHeartBeat then
+		TheDelay = true
+		
+		for _, v in pairs(Esp.Parent:GetChildren()) do
+			if string.find(v.Name, "Esp bill") then
+				v:Destroy()
+			end
+		end
+		
+		wait(math.random(30, 60))
+		TheDelay = false
+		
+	elseif not IsFromHeartBeat then
+		for _, v in pairs(Esp.Parent:GetChildren()) do
+			if string.find(v.Name, "Esp bill") then
+				v:Destroy()
+			end
+		end
+	end
+end
+
+local db = false
+local TheFunc
+
+TheFunc = game:GetService("RunService").Heartbeat:Connect(function()
+	if db == false and IsClosed ~= true then
+		db = true
+
+		for _, plr in pairs(PS:GetPlayers()) do
+			if plr.Name == PS.LocalPlayer.Name and _G.Esp_Enable then
+				UpdatePlrEsp(plr, _G.Esp_SelfEsp)
+			else
+				UpdatePlrEsp(plr, _G.Esp_Enable)
+			end
+		end
+
+		wait(0.1)
+		db = false
+	end
+	
+	CleanEsp(true)
+end)
+
+
+
+
+
+-- BUTTON SYSTEM
+local function UpdateAllButtonColor()
+	if _G.Esp_Enable == true then
+		InfoEnable.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+	else
+		InfoEnable.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	end
+
+	if _G.Esp_Outline == true then
+		InfoOutlineOnly.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+	else
+		InfoOutlineOnly.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	end
+
+	if _G.Esp_ShowName == true then
+		InfoShowName.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+	else
+		InfoShowName.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	end
+
+	if _G.Esp_ShowStuds  == true then
+		InfoShowStuds.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+	else
+		InfoShowStuds.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	end
+
+	if _G.Esp_EspTeamColor == true then
+		InfoEspTeamColor.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+	else
+		InfoEspTeamColor.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	end
+
+	if _G.Esp_ViewTarget == true then
+		InfoViewTarget.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+	else
+		InfoViewTarget.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	end
+
+	if _G.Esp_SelfEsp == true then
+		InfoSelfEsp.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+	else
+		InfoSelfEsp.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	end
+end
+UpdateAllButtonColor()
+
+--enable
+ButtonEnable.MouseButton1Click:Connect(function()
+	if _G.Esp_Enable == true then
+		_G.Esp_Enable = false
+		UpdateAllButtonColor()
+	else
+		_G.Esp_Enable = true
+		UpdateAllButtonColor()
+	end
+end)
+
+--outline
+ButtonOutline.MouseButton1Click:Connect(function()
+	if _G.Esp_Outline == true then
+		_G.Esp_Outline = false
+		UpdateAllButtonColor()
+	else
+		_G.Esp_Outline = true
+		UpdateAllButtonColor()
+	end
+end)
+
+ButtonShowName.MouseButton1Click:Connect(function()
+	if _G.Esp_ShowName == true then
+		_G.Esp_ShowName = false
+		UpdateAllButtonColor()
+	else
+		_G.Esp_ShowName = true
+		UpdateAllButtonColor()
+	end
+end)
+
+ButtonShowStuds.MouseButton1Click:Connect(function()
+	if _G.Esp_ShowStuds == true then
+		_G.Esp_ShowStuds = false
+		UpdateAllButtonColor()
+	else
+		_G.Esp_ShowStuds = true
+		UpdateAllButtonColor()
+	end
+end)
+
+ButtonEspTeamColor.MouseButton1Click:Connect(function()
+	if _G.Esp_EspTeamColor == true then
+		_G.Esp_EspTeamColor = false
+		UpdateAllButtonColor()
+	else
+		_G.Esp_EspTeamColor = true
+		UpdateAllButtonColor()
+	end
+end)
+
+ButtonViewTarget.MouseButton1Click:Connect(function()
+	if _G.Esp_ViewTarget == true then
+		_G.Esp_ViewTarget = false
+		UpdateAllButtonColor()
+	else
+		_G.Esp_ViewTarget = true
+		UpdateAllButtonColor()
+	end
+end)
+
+ButtonSelfEsp.MouseButton1Click:Connect(function()
+	if _G.Esp_SelfEsp == true then
+		_G.Esp_SelfEsp = false
+		UpdateAllButtonColor()
+	else
+		_G.Esp_SelfEsp = true
+		UpdateAllButtonColor()
+	end
+end)
+
+_G.ForceClose = function()
+		print("work")
+		_G.Esp_Enable = false
+		IsClosed = true
+
+		TheFunc:Disconnect()
+
+		for _, plr in pairs(PS:GetPlayers()) do
+			UpdatePlrEsp(plr, false)
+		end
+
+		CleanEsp(false)
+		wait()
+
+		Esp:Destroy()
+		--Camera.CameraSubject = game:GetService("Players").LocalPlayer.Character.Humanoid
+		return true
+end
